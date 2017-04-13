@@ -1,0 +1,13 @@
+<h1>List of Brands</h1>
+
+<% if @brands.any?() %>
+  <ul>
+    <% @brands.each() do |brand| %>
+    <h4><%=brand.name()%> <a class="btn btn-info" href="/brands/<%=brand.id()%>">View</a>
+    </h4>
+    <% end %>
+  </ul>
+
+  <% else %>
+    <p>No brands in the database yet!</p>
+  <% end %>

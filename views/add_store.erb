@@ -1,1 +1,31 @@
-<p>As a user, I want to be able to add, update, delete and list shoe stores.</p>
+<h1>Shoe Store Page</h1>
+
+<div>
+
+  <h4>Add a Store:</h4>
+
+  <form action="/add_stores" method="post">
+    <label for="name">Store Name: </label>
+    <input type="text" name="name" id="name">
+    <button class="btn btn-success" type="submit">Add Store</button>
+  </form>
+
+  <hr>
+
+  <% if @stores.any?() %>
+    <ul>
+      <% @stores.each() do |store| %>
+      <h4><%=store.name()%> <a class="btn btn-info" href="/stores/<%=store.id()%>/edit">Edit</a>
+        <form action="/stores/<%=store.id()%>/delete" style="display: inline-block" method="post">
+          <input name="_method" type="hidden" value="delete">
+          <button class="btn btn-danger" type="submit">Remove</button>
+        </form>
+      </h4>
+      <% end %>
+    </ul>
+
+    <% else %>
+      <p>No stores in the database yet!</p>
+    <% end %>
+
+  </div>

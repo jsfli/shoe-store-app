@@ -1,0 +1,13 @@
+<h1>List of Stores</h1>
+
+<% if @stores.any?() %>
+  <ul>
+    <% @stores.each() do |store| %>
+    <h5><%=store.name()%> <a class="btn btn-info" href="/stores/<%=store.id()%>">View</a>
+    </h5>
+    <% end %>
+  </ul>
+
+  <% else %>
+    <p>No stores in the database yet!</p>
+  <% end %>

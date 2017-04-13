@@ -1,0 +1,31 @@
+<h1><%=@store.name()%></h1>
+
+<h4>Associate a shoe brand with this store: </h4>
+
+<form id="add_brand_id" action="/stores/<%= @store.id() %>/add_brand" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <label for="brand_id">Select a brand: </label>
+    <br>
+  <select id="brand_id" name="brand_id">
+    <option value=""></option>
+    <% @brands.each() do |brand| %>
+      <option value="<%= brand.id() %>"><%= brand.name() %></option>
+    <% end %>
+  </select>
+  <button class="btn btn-success"type="submit">Submit</button>
+</form>
+
+<hr>
+
+<h4>This store sells the following brands:</h4>
+
+<% if @store.brands.any?() %>
+  <ul>
+    <% @store.brands.each() do |brand| %>
+    <h5><%=brand.name()%> </h5>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>No shoes asscociated with this store yet!</p>
+<% end %>

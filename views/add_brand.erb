@@ -1,0 +1,28 @@
+<h1>Shoe Brand Page</h1>
+
+<div>
+
+  <h4>Add a Brand: (don't worry about updating, listing or destroying shoe brands).</h4>
+
+  <form action="/add_brands" method="post">
+    <label for="name">Brand Name: </label>
+    <input type="text" name="name" id="name">
+    <button class="btn btn-success" type="submit">Add Shoe Brand</button>
+  </form>
+
+  <hr>
+
+  <h4>List of shoes on the database</h4>
+
+  <% if @brands.any?() %>
+    <ul>
+      <% @brands.each() do |brand| %>
+      <h4><%=brand.name()%></h4>
+      <% end %>
+    </ul>
+
+    <% else %>
+      <p>No shoe brands in the database yet!</p>
+    <% end %>
+
+  </div>
